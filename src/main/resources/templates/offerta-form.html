@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Offerte</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h1>Offerta pizza:</h1>
+	<form
+		method="POST"
+	>
+		<select name="pizza_id">
+			<option
+				th:each="pizza : ${pizzas}"
+				th:object="${pizza}"
+				th:value="*{id}"
+			>
+				[[*{nome}]]
+			</option>
+		</select>
+		<input type="text" name="titolo" >
+		<input type="submit" value="OFFERTA">
+	</form>
+</body>
+</html>

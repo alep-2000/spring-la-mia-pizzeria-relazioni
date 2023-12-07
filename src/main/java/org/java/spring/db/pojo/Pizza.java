@@ -1,5 +1,7 @@
 package org.java.spring.db.pojo;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 
@@ -33,6 +36,9 @@ public class Pizza {
 	
 	@PositiveOrZero(message = "Puoi inserire solamente un numero positivo o uguale a 0") 
 	private double prezzo;
+	
+	@OneToMany(mappedBy = "pizza")
+	private List<OffertaSpeciale> offerteSpeciali;
 	
 	public Pizza() { }
 	public Pizza(String nome, String descrizione, String foto, double prezzo) {
@@ -72,6 +78,13 @@ public class Pizza {
 	}
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+		
+	public List<OffertaSpeciale> getOfferteSpeciali() {
+		return offerteSpeciali;
+	}
+	public void setOfferteSpeciali(List<OffertaSpeciale> offerteSpeciali) {
+		this.offerteSpeciali = offerteSpeciali;
 	}
 	@Override
 	public String toString() {

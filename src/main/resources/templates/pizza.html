@@ -11,8 +11,9 @@
 >
 	<h1 class="text-center mt-2 mb-5 text-white" th:text="|[*{id}] Pizza:|"></h1>
 	<div class="container">
-		<div class="me-2">
-			<div th:insert="frags :: button('/', 'Pizzas')"></div>							
+		<div class="d-flex">
+			<div class="me-2" th:insert="frags :: button('/', 'Pizzas')"></div>
+			<div th:insert="frags :: button('/pizzas/offerta', 'Crea nuova offerta speciale')"></div>							
 		</div>
 		<div class="row justify-content-center align-items-center g-0">
 			<div class="card m-3 d-flex col-12 col-md-4 col-md-3 text-center" style="width: 18rem;">
@@ -22,6 +23,16 @@
 			    <p class="card-text">[[*{descrizione}]]</p>
 			  </div>
 			  <p>[[*{prezzo}]]</p>
+			  	<ul class="list-unstyled">
+					<li
+						th:each="offertaSpeciale : *{offerteSpeciali}"
+						th:object="${offertaSpeciale}"
+					>
+						OFFERTA: <strong>[[*{titolo}]]</strong> <br/>
+						Data Inizio: [[*{dataInizio}]] <br/>
+						Data Fine: [[*{dataFine}]]
+					</li> 	
+				</ul>
 			</div>
 		</div>
 	</div>
