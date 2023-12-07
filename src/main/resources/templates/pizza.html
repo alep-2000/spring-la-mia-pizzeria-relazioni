@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Best Pizza</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body
+	th:object="${pizza}"
+	class="bg-secondary-subtle"
+>
+	<h1 class="text-center mt-2 mb-5 text-white" th:text="|[*{id}] Pizza:|"></h1>
+	<div class="container">
+		<div class="me-2">
+			<div th:insert="frags :: button('/', 'Pizzas')"></div>							
+		</div>
+		<div class="row justify-content-center align-items-center g-0">
+			<div class="card m-3 d-flex col-12 col-md-4 col-md-3 text-center" style="width: 18rem;">
+			  <img th:src="*{foto}" class="card-img-top" alt="..." style="height: 14rem; max-width: 18rem;">
+			  <div class="card-body">
+				<h5 class="card-title">[[*{nome}]]</h5>								
+			    <p class="card-text">[[*{descrizione}]]</p>
+			  </div>
+			  <p>[[*{prezzo}]]</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css} "/>
+	<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script> 
+</head>
+<body>
+	<a
+		th:fragment="button(link, title)"
+		th:href="${link}"
+		th:text="${title}"
+		class="btn btn-success"
+		>
+	</a>
+	
+	<div th:fragment="errorDiv(field)"
+		th:if="${#fields.hasErrors(field)}"
+		class="alert alert-danger">
+		<ul>
+		   <li 
+		   		th:each="err : ${#fields.errors(field)}">
+		   		[[${err}]]	
+		   	</li>
+		</ul>
+	</div>
+</body>
+</html>
