@@ -8,6 +8,8 @@
 <body>
 	<h1>Offerta pizza:</h1>
 	<form
+		th:object="${offerta}"
+		th:action="@{'/pizzas/{id}/offerta/edit/'}"
 		method="POST"
 	>
 		<select name="pizza_id">
@@ -15,11 +17,12 @@
 				th:each="pizza : ${pizzas}"
 				th:object="${pizza}"
 				th:value="*{id}"
+				th:field="nome"
 			>
 				[[*{nome}]]
 			</option>
 		</select>
-		<input type="text" name="titolo" >
+		<input type="text" name="titolo" th:field="*{titolo}">
 		<input type="submit" value="OFFERTA">
 	</form>
 </body>

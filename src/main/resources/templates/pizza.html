@@ -32,6 +32,13 @@
 						Data Inizio: [[*{dataInizio}]] <br/>
 						Data Fine: [[*{dataFine}]]
 					</li> 	
+					<li class="mt-2">
+						<a th:href="@{/pizzas/{id}/offerta/edit (id=*{id})}">
+							<button class="btn btn-primary">
+								Modifica l'offerta
+							</button>									
+						</a>	
+					</li>
 				</ul>
 			</div>
 		</div>

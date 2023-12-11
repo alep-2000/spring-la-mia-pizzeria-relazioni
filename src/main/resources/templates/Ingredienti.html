@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Best ingredienti</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+</head>
+<body class="bg-secondary-subtle">
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-12">
+				<h1 class="text-center mt-2 mb-5 text-white">Ingredienti:</h1>
+				<a href="/pizzas/ingredienti/create">
+					<button class="btn btn-success mb-3 me-2">
+						Crea Nuovi Ingredienti
+					</button>									
+				</a>
+			</div>
+		</div>
+		<div class="row g-0">
+			<div 	
+				th:each="ingrediente : ${ingredienti}"
+				th:object="${ingrediente}">
+			    <p class="card-text">[[*{nome}]]</p>
+			    <form 
+					style="display:inline-block"
+					th:action="@{/pizzas/ingredienti/delete/{id} (id=*{id})}"
+					method="POST">
+					<div class="d-flex justify-content-center mb-3">
+						<button type="submit" class="btn btn-danger" value="DELETE">
+							Elimina l'ingrediente
+						</button>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

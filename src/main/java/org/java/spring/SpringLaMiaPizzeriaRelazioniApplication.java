@@ -3,8 +3,10 @@ package org.java.spring;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.java.spring.db.pojo.Ingrediente;
 import org.java.spring.db.pojo.OffertaSpeciale;
 import org.java.spring.db.pojo.Pizza;
+import org.java.spring.db.service.IngredienteService;
 import org.java.spring.db.service.OffertaSpecialeService;
 import org.java.spring.db.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 	
 	@Autowired
 	private OffertaSpecialeService offertaSpecialeService;
+	
+	@Autowired
+	private IngredienteService ingredienteService;
 		
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaRelazioniApplication.class, args);
@@ -30,6 +35,14 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 	@Override
 	public void run(String... args) throws Exception {
 	
+		
+		Ingrediente in1 = new Ingrediente("Peperoni");
+		Ingrediente in2 = new Ingrediente("Polpette");
+		Ingrediente in3 = new Ingrediente("Patatine");
+		
+		ingredienteService.save(in1);
+		ingredienteService.save(in2);
+		ingredienteService.save(in3);
 		
 		pizzaService.save(new Pizza("Margherita", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200", 6.99));
 		pizzaService.save(new Pizza("Marinara", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200/300", 8));
