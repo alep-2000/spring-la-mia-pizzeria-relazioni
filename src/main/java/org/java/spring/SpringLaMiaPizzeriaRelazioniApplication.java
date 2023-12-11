@@ -44,7 +44,7 @@ public class SpringLaMiaPizzeriaRelazioniApplication implements CommandLineRunne
 		ingredienteService.save(in2);
 		ingredienteService.save(in3);
 		
-		pizzaService.save(new Pizza("Margherita", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200", 6.99));
+		pizzaService.save(new Pizza("Margherita", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200", 6.99, in1));
 		pizzaService.save(new Pizza("Marinara", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200/300", 8));
 		pizzaService.save(new Pizza("Bufala", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200/300", 18));
 		pizzaService.save(new Pizza("Funghi", "Una buona pizza con ingredienti freschi", "https://picsum.photos/200/300", 15.50));

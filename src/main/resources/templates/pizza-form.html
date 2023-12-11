@@ -35,6 +35,22 @@
 					    <input type="number" class="form-control mb-2" id="prezzo" step="any" th:field="*{prezzo}">
 					    <div id="prezzo" class="form-text" th:replace="frags::errorDiv('prezzo')"></div>
 					  </div>
+					  <h4>Ingredienti:</h4>
+						<div
+							th:each="ingrediente : ${ingredienti}"
+							th:object="${ingrediente}"
+						>	
+							<input 
+								type="checkbox"
+								th:id="${'ingrediente-' + ingrediente.id}" 
+								th:value="*{id}" 
+								th:field="${pizza.ingredienti}"
+							>
+							<label
+								th:for="${'ingrediente-' + ingrediente.id}"
+							>[[*{nome}]]</label>
+							<br>
+						</div>		
 					  <button type="submit" class="btn btn-success" value="STORE">Crea pizza</button>
 					</form>					
 				</div>

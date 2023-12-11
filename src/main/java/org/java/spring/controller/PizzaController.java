@@ -2,7 +2,9 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.java.spring.db.pojo.Ingrediente;
 import org.java.spring.db.pojo.Pizza;
+import org.java.spring.db.service.IngredienteService;
 import org.java.spring.db.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class PizzaController {
 	@Autowired
 	private PizzaService pizzaService;
 
+	@Autowired
+	private IngredienteService ingredienteService;
+	
 	@GetMapping
 	public String getPizzas(Model model,
 			@RequestParam(required = false) String p) {
@@ -51,7 +56,9 @@ public class PizzaController {
 		
 		Pizza pizza = new Pizza();
 		
+		List<Ingrediente> ingredienti = ingredienteService.findAll();
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("ingredienti", ingredienti);
 		
 		return "pizza-form";
 	}
@@ -69,8 +76,10 @@ public class PizzaController {
 	public String editPizza(Model model,
 			@PathVariable int id) {
 		
+		List<Ingrediente> ingredienti = ingredienteService.findAll();
 		Pizza pizza = pizzaService.findById(id);
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("ingredienti", ingredienti);
 		
 		return "pizza-form";
 	}
